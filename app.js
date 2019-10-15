@@ -22,31 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.get('/connect', (req, res) => {
-  if (mongoose.connection.readyState != 1) {
-      mongoose.connect('mongodb+srv://omar:567728@cluster0-rqkxs.mongodb.net/myDB?retryWrites=true&w=majority', {
-          useNewUrlParser: true,
-          useCreateIndex: true
-      }).then(() => {
-          res.send('connected');
-      }).catch(error => {
-          res.send(error);
-      })
-  } else {
-      res.send('connected');
-  }
-});
-app.get('/connectionstatus', (req, res) => {
-  res.send(mongoose.connection.readyState.toString());
-})
-app.get('/disconnect', (req, res) => {
-  mongoose.disconnect().then(() => {
-      res.send("disconnected");
-  }).catch(error => {
-      res.send(error);
-  });
-});
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
