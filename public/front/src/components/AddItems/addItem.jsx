@@ -4,7 +4,7 @@ import React,{Component} from 'react'
 class AddItems extends Component{
    
     state={
-        name:'',
+        item:'',
         description:''
     }
 handleChange=(e)=>{
@@ -16,7 +16,7 @@ handleChange=(e)=>{
 handleSubmit=(e)=>{
 e.preventDefault();
 console.log(this.state)
-if(this.state.description===''|| this.state.name===''){
+if(this.state.description===''|| this.state.item===''){
     return false
 }else{
     // this.props.addItem(this.state)
@@ -24,11 +24,11 @@ if(this.state.description===''|| this.state.name===''){
     //         name:'',
     //         description:''
     //     })
-    this.props.sendItem('/',{name:this.state.name,description:this.state.description}).then(data=>{
+    this.props.sendItem('/',{name:this.state.item,description:this.state.description}).then(data=>{
         if(data == 1){
             this.props.addItem(this.state)
         this.setState({
-            name:'',
+            item:'',
             description:''
         })
         }else{
@@ -47,7 +47,7 @@ if(this.state.description===''|| this.state.name===''){
         return(
             <div>
                 <form >
-                    <input type="text" placeholder="Enter Name..." id="name" onChange={this.handleChange} value = {this.state.name}/>
+                    <input type="text" placeholder="Enter Name..." id="item" onChange={this.handleChange} value = {this.state.item}/>
                     <input type="text" placeholder="Enter description.." id="description" onChange={this.handleChange}
                         value= {this.state.description}
                     />
