@@ -43,7 +43,12 @@ this.setState({items})
   
   addItem=(item)=>{
     item.id=Math.random();
-    this.state.items.push(item);
+    let items = this.state.items;
+    items.push(item);
+    
+    this.setState({
+      items
+    })
   }
    hide=()=>{
  if(this.state.show){
